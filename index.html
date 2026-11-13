@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guillermo Astiaso · Inteligencia política y datos</title>
+<meta name="description" content="Herramientas abiertas con datos públicos para seguir la política, la opinión pública en España y las problemáticas sociales: barómetros del CIS, historias con datos, vivienda y salarios, y la media de encuestas de las generales.">
+<link rel="canonical" href="https://gastiaso.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Guillermo Astiaso">
+<meta property="og:title" content="Guillermo Astiaso · Inteligencia política y datos">
+<meta property="og:description" content="Herramientas abiertas con datos públicos para seguir la política, la opinión pública en España y las problemáticas sociales.">
+<meta property="og:url" content="https://gastiaso.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f1d1a'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='21' text-anchor='middle' fill='%23f4efe6'%3Eg%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Guillermo Astiaso",
+  "url": "https://gastiaso.github.io/",
+  "description": "Inteligencia política y datos.",
+  "sameAs": [
+    "https://www.linkedin.com/in/guillermo-astiaso/",
+    "https://github.com/gastiaso"
+  ]
+}
+</script>
+<style>
+  :root {
+    --papel: #f4efe6;
+    --tarjeta: #fbf8f2;
+    --tinta: #1f1d1a;
+    --gris: #5d5850;
+    --linea: #d9d1c3;
+    --acento: #a2361f;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--papel);
+    color: var(--tinta);
+    font: 17px/1.55 var(--sans);
+  }
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--acento); }
+  a:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+  .pagina { max-width: 980px; margin: 0 auto; padding: 56px 24px 40px; }
+
+  header { max-width: 640px; margin-bottom: 56px; }
+  h1 {
+    font: 600 clamp(2.3rem, 6vw, 3.4rem)/1.05 var(--serif);
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+  }
+  .lema {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin: 0 0 22px;
+  }
+  .entrada { font-size: 1.12rem; color: var(--gris); margin: 0; }
+
+  h2 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gris);
+    border-top: 1px solid var(--linea);
+    padding-top: 14px;
+    margin: 0 0 24px;
+  }
+  .proyectos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+    gap: 28px;
+  }
+  .proyecto {
+    background: var(--tarjeta);
+    border: 1px solid var(--linea);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .proyecto img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 630;
+    border-bottom: 1px solid var(--linea);
+    background: var(--linea);
+  }
+  .texto { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+  h3 { font: 600 1.35rem/1.2 var(--serif); margin: 0 0 8px; }
+  h3 a { text-decoration: none; }
+  h3 a:hover { text-decoration: underline; }
+  .texto p { margin: 0 0 16px; color: var(--gris); font-size: 0.98rem; }
+  .enlaces { margin-top: auto; display: flex; gap: 18px; font-size: 0.92rem; font-weight: 600; }
+  .texto p.estado {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--acento);
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin: 0 0 10px;
+  }
+
+  footer { margin-top: 64px; }
+  footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; flex-wrap: wrap; }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .pagina { padding-top: 36px; }
+    header { margin-bottom: 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+<header>
+  <h1>Guillermo Astiaso</h1>
+  <p class="lema">Inteligencia política y datos</p>
+  <p class="entrada">Construyo herramientas abiertas con datos públicos para seguir la política, la opinión pública en España y las problemáticas sociales.</p>
+</header>
+
+<main>
+  <section aria-labelledby="titulo-proyectos">
+    <h2 id="titulo-proyectos">Proyectos</h2>
+    <ul class="proyectos">
+
+      <li class="proyecto">
+        <a href="https://gastiaso.github.io/porra-electoral/" tabindex="-1" aria-hidden="true">
+          <img src="https://gastiaso.github.io/porra-electoral/img/og-portada.png" width="1200" height="630" loading="lazy" alt="">
+        </a>
+        <div class="texto">
+          <h3><a href="https://gastiaso.github.io/porra-electoral/">Porra Electoral</a></h3>
+          <p>La media de las encuestas de las generales del 29 de noviembre de 2026, los escaños que salen de ella y una porra sin dinero para jugar con amigos.</p>
+          <div class="enlaces">
+            <a href="https://gastiaso.github.io/porra-electoral/">Abrir</a>
+            <a href="https://github.com/gastiaso/porra-electoral">Código</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="proyecto">
+        <a href="https://gastiaso.github.io/barometros/" tabindex="-1" aria-hidden="true">
+          <img src="https://gastiaso.github.io/barometros/img/vista-previa.png" width="1200" height="630" loading="lazy" alt="">
+        </a>
+        <div class="texto">
+          <h3><a href="https://gastiaso.github.io/barometros/">Barómetro a barómetro</a></h3>
+          <p>Las series de los barómetros mensuales del CIS desde 2021, calculadas con los microdatos, con cruces por perfil y rupturas de serie señaladas.</p>
+          <div class="enlaces">
+            <a href="https://gastiaso.github.io/barometros/">Abrir</a>
+            <a href="https://github.com/gastiaso/barometros">Código</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="proyecto">
+        <a href="https://gastiaso.github.io/historias/" tabindex="-1" aria-hidden="true">
+          <img src="https://gastiaso.github.io/historias/compartir/sitio.png" width="1200" height="630" loading="lazy" alt="">
+        </a>
+        <div class="texto">
+          <h3><a href="https://gastiaso.github.io/historias/">Historias con los barómetros del CIS</a></h3>
+          <p>Historias para leer con scroll, en las que el gráfico cambia mientras avanza el texto. La primera: cómo la vivienda se convirtió en el primer problema de España.</p>
+          <div class="enlaces">
+            <a href="https://gastiaso.github.io/historias/">Abrir</a>
+            <a href="https://github.com/gastiaso/historias">Código</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="proyecto">
+        <a href="https://gastiaso.github.io/de-renta-en-renta/" tabindex="-1" aria-hidden="true">
+          <img src="https://gastiaso.github.io/de-renta-en-renta/estilo/tarjeta.png" width="1200" height="630" loading="lazy" alt="">
+        </a>
+        <div class="texto">
+          <p class="estado">En construcción</p>
+          <h3><a href="https://gastiaso.github.io/de-renta-en-renta/">De renta en renta</a></h3>
+          <p>Atlas de vivienda y salarios por sección censal desde 2015. ¿A quién le queda sueldo después de pagar la vivienda?</p>
+          <div class="enlaces">
+            <a href="https://gastiaso.github.io/de-renta-en-renta/">Abrir</a>
+            <a href="https://github.com/gastiaso/de-renta-en-renta">Código</a>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <h2>Contacto</h2>
+  <ul>
+    <li><a href="https://www.linkedin.com/in/guillermo-astiaso/">LinkedIn</a></li>
+    <li><a href="https://github.com/gastiaso">GitHub</a></li>
+  </ul>
+</footer>
+
+</div>
+</body>
+</html>
