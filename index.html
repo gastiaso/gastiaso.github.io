@@ -4,16 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guillermo Astiaso · Inteligencia política y datos</title>
-<meta name="description" content="Herramientas abiertas con datos públicos para seguir la política, la opinión pública en España y las problemáticas sociales: barómetros del CIS, historias con datos, vivienda y salarios, la media de encuestas de las generales y cómo se pasa de las urnas a un Gobierno.">
+<meta name="description" content="Herramientas abiertas con datos públicos sobre la política y los problemas sociales en España, y sobre lo que la gente opina de ellos: la media de encuestas de las generales, los barómetros del CIS, una guía del sistema electoral y un atlas de vivienda y salarios.">
 <link rel="canonical" href="https://gastiaso.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Guillermo Astiaso">
 <meta property="og:title" content="Guillermo Astiaso · Inteligencia política y datos">
-<meta property="og:description" content="Herramientas abiertas con datos públicos para seguir la política, la opinión pública en España y las problemáticas sociales.">
+<meta property="og:description" content="Herramientas abiertas con datos públicos sobre la política y los problemas sociales en España, y sobre lo que la gente opina de ellos.">
 <meta property="og:url" content="https://gastiaso.github.io/">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f1d1a'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='21' text-anchor='middle' fill='%23f4efe6'%3Eg%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#fcfbf8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0b0b'/%3E%3Ctext x='16' y='25' font-family='Impact,Arial Narrow,sans-serif' font-size='24' text-anchor='middle' fill='%23ffc736'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="fuentes/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -28,205 +30,282 @@
 }
 </script>
 <style>
+  /* Tipografías servidas desde el propio sitio (SIL Open Font License 1.1, licencias en fuentes/) */
+  @font-face { font-family: "Anton"; src: url("fuentes/anton-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "IBM Plex Sans"; src: url("fuentes/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "IBM Plex Sans"; src: url("fuentes/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: "IBM Plex Sans Condensed"; src: url("fuentes/ibm-plex-sans-condensed-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Space Mono"; src: url("fuentes/space-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Space Mono"; src: url("fuentes/space-mono-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
+  /* Dos tintas, negro y amarillo, sobre papel. Solo versión en papel, también con el sistema en modo oscuro */
   :root {
-    --papel: #f4efe6;
-    --tarjeta: #fbf8f2;
-    --tinta: #1f1d1a;
-    --gris: #5d5850;
-    --linea: #d9d1c3;
-    --acento: #a2361f;
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --papel: #fcfbf8;
+    --tinta: #0b0b0b;
+    --gris: #45433f;
+    --linea: #0b0b0b;
+    --amarillo: #ffc736;
+    --etiqueta-fondo: #0b0b0b;
+    --etiqueta-texto: #fcfbf8;
+
+    --rotulo: "Anton", Impact, "Arial Narrow", sans-serif;
+    --texto: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --cond: "IBM Plex Sans Condensed", "IBM Plex Sans", "Arial Narrow", sans-serif;
+    --mono: "Space Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+    --filete: 6px;
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; color-scheme: light; }
   body {
     margin: 0;
     background: var(--papel);
     color: var(--tinta);
-    font: 17px/1.55 var(--sans);
+    font: 17px/1.55 var(--texto);
+    overflow-x: hidden;
   }
   a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  a:hover { color: var(--acento); }
-  a:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
-  .pagina { max-width: 980px; margin: 0 auto; padding: 56px 24px 40px; }
+  a:focus-visible { outline: 3px solid var(--amarillo); outline-offset: 3px; }
+  ::selection { background: var(--amarillo); color: #0b0b0b; }
 
-  header { max-width: 640px; margin-bottom: 56px; }
-  h1 {
-    font: 600 clamp(2.3rem, 6vw, 3.4rem)/1.05 var(--serif);
-    letter-spacing: -0.01em;
-    margin: 0 0 10px;
-  }
-  .lema {
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--acento);
-    margin: 0 0 22px;
-  }
-  .entrada { font-size: 1.12rem; color: var(--gris); margin: 0; }
+  .pagina { max-width: 1080px; margin: 0 auto; padding: 0 24px; position: relative; }
 
-  h2 {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+  /* Rótulo vertical en el margen */
+  .rot {
+    position: absolute;
+    left: -30px;
+    top: 4px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font: 700 0.66rem/1 var(--mono);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--gris);
-    border-top: 1px solid var(--linea);
-    padding-top: 14px;
-    margin: 0 0 24px;
+    white-space: nowrap;
   }
+  @media (max-width: 1160px) { .rot { display: none; } }
+
+  /* Cabecera */
+  .cabecera {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: end;
+    padding: 64px 0 72px;
+  }
+  h1 {
+    font: 400 clamp(3.4rem, 8.6vw, 6.4rem)/1.17 var(--rotulo);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin: 0 0 22px;
+  }
+  h1 span {
+    background: var(--etiqueta-fondo);
+    color: var(--etiqueta-texto);
+    padding: 0.06em 0.14em 0;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .lema {
+    display: inline;
+    font: 700 1.05rem/1.9 var(--cond);
+    border-bottom: var(--filete) solid var(--amarillo);
+    margin: 0;
+  }
+  .entrada {
+    border-top: var(--filete) solid var(--linea);
+    padding-top: 14px;
+  }
+  .entrada p {
+    font-size: 1.08rem;
+    line-height: 1.55;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* Secciones */
+  section { position: relative; margin-bottom: 80px; }
+  h2 {
+    font: 400 clamp(2rem, 4.6vw, 2.9rem)/1 var(--rotulo);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    border-top: var(--filete) solid var(--linea);
+    padding-top: 12px;
+    margin: 0 0 22px;
+  }
+
+  /* Índice */
+  .indice { list-style: none; margin: 0 0 56px; padding: 0; border-top: 2px solid var(--linea); }
+  .indice li { border-bottom: 1px solid var(--linea); }
+  .indice a {
+    display: grid;
+    grid-template-columns: 2.4em 1fr auto;
+    align-items: baseline;
+    gap: 12px;
+    padding: 9px 0 8px;
+    text-decoration: none;
+  }
+  .indice .n { font: 700 0.75rem/1 var(--mono); }
+  .indice b { font: 700 1.02rem/1.3 var(--cond); }
+  .indice .flecha { font: 400 0.74rem/1 var(--mono); color: var(--gris); white-space: nowrap; }
+  .indice a:hover b { background: var(--amarillo); color: #0b0b0b; }
+
+  /* Tarjetas */
   .proyectos {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
+    gap: 56px 40px;
   }
-  .proyecto {
-    background: var(--tarjeta);
-    border: 1px solid var(--linea);
-    border-radius: 6px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+  .proyecto { border-top: var(--filete) solid var(--linea); padding-top: 14px; display: flex; flex-direction: column; scroll-margin-top: 16px; }
+  .proyecto .cab { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+  .proyecto .num { font: 400 3.4rem/0.82 var(--rotulo); }
+  .proyecto h3 {
+    font: 400 1.75rem/1.04 var(--rotulo);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin: 0;
   }
-  .proyecto img {
+  .proyecto h3 a { text-decoration: none; }
+  .proyecto h3 a:hover { background: var(--amarillo); color: #0b0b0b; }
+
+  /* Foto en blanco y negro fundida sobre el amarillo; color al pasar por encima */
+  .foto { display: block; background: var(--amarillo); margin-bottom: 14px; border: 2px solid var(--linea); }
+  .foto img {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 1200 / 630;
-    border-bottom: 1px solid var(--linea);
-    background: var(--linea);
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.35) brightness(1.04);
+    mix-blend-mode: multiply;
+    transition: filter 0.25s ease;
   }
-  .texto { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
-  h3 { font: 600 1.35rem/1.2 var(--serif); margin: 0 0 8px; }
-  h3 a { text-decoration: none; }
-  h3 a:hover { text-decoration: underline; }
-  .texto p { margin: 0 0 16px; color: var(--gris); font-size: 0.98rem; }
-  .enlaces { margin-top: auto; display: flex; gap: 18px; font-size: 0.92rem; font-weight: 600; }
-  .texto p.estado {
-    align-self: flex-start;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+  .foto:hover img, .proyecto:focus-within .foto img { filter: none; mix-blend-mode: normal; }
+  @media (prefers-reduced-motion: reduce) { .foto img { transition: none; } }
+
+  .chapas { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; padding: 0; list-style: none; }
+  .chapas li {
+    font: 700 0.68rem/1 var(--mono);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--acento);
-    border: 1px solid currentColor;
-    border-radius: 3px;
-    padding: 1px 6px;
-    margin: 0 0 10px;
+    background: var(--etiqueta-fondo);
+    color: var(--etiqueta-texto);
+    padding: 5px 7px 4px;
   }
+  .chapas li.aviso { background: var(--amarillo); color: #0b0b0b; }
 
-  footer { margin-top: 64px; }
-  footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; flex-wrap: wrap; }
+  .proyecto p.desc { margin: 0 0 20px; color: var(--gris); font-size: 0.97rem; line-height: 1.58; }
+  .enlaces { margin-top: auto; display: flex; gap: 22px; }
+  .enlaces a { font: 700 0.78rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; padding: 4px 0; border-bottom: 2px solid var(--linea); }
+  .enlaces a::before { content: "→ "; }
+  .enlaces a:hover { background: var(--amarillo); color: #0b0b0b; border-color: #0b0b0b; }
 
+  /* Contacto */
+  .contra { background: #0b0b0b; color: #f4f1ea; }
+  .contra .pagina { padding-top: 48px; padding-bottom: 48px; }
+  .contra h2 { border-top-color: #f4f1ea; color: #ffc736; margin-bottom: 18px; }
+  .contra p { margin: 0 0 22px; max-width: 34em; color: #d6d1c7; }
+  .contra ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 26px; flex-wrap: wrap; }
+  .contra ul a { font: 700 0.85rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-bottom: 2px solid #ffc736; padding-bottom: 3px; }
+  .contra ul a:hover { background: #ffc736; color: #0b0b0b; }
+
+  @media (max-width: 820px) {
+    .cabecera { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 56px; }
+  }
   @media (max-width: 560px) {
     body { font-size: 16px; }
-    .pagina { padding-top: 36px; }
-    header { margin-bottom: 40px; }
+    .pagina { padding: 0 16px; }
+    .proyecto .num { font-size: 2.8rem; }
+    .proyecto h3 { font-size: 1.5rem; }
+    .indice .flecha { display: none; }
+    .indice a { grid-template-columns: 2.2em 1fr; }
   }
 </style>
 </head>
 <body>
+
 <div class="pagina">
+  <header class="cabecera">
+    <div>
+      <h1><span>Guillermo</span><br><span>Astiaso</span></h1>
+      <p class="lema">Inteligencia política y datos</p>
+    </div>
+    <div class="entrada">
+      <p>Mucho de lo que pasa en España ya está en datos públicos, pero repartido en tablas y ficheros que casi nadie abre. Trabajo con esas fuentes, como los microdatos del CIS o los boletines oficiales, y las convierto en herramientas abiertas sobre la política y los problemas sociales, y sobre lo que la gente opina de ellos. Son cosas que se pueden usar sin saber estadística, como la media de las encuestas electorales o un atlas de lo que cuesta la vivienda frente a lo que se cobra. Me interesa que lo complejo se entienda y que lo que se entiende sirva para algo. Intento que cada cifra lleve su fuente y publico el código, para que quien quiera pueda comprobar las cuentas o hacer las suyas.</p>
+    </div>
+  </header>
 
-<header>
-  <h1>Guillermo Astiaso</h1>
-  <p class="lema">Inteligencia política y datos</p>
-  <p class="entrada">Construyo herramientas abiertas con datos públicos para seguir la política, la opinión pública en España y las problemáticas sociales.</p>
-</header>
+  <main>
+    <section aria-labelledby="t-proyectos">
+      <span class="rot" aria-hidden="true">Proyectos</span>
+      <h2 id="t-proyectos">Proyectos</h2>
 
-<main>
-  <section aria-labelledby="titulo-proyectos">
-    <h2 id="titulo-proyectos">Proyectos</h2>
-    <ul class="proyectos">
+      <ol class="indice">
+        <li><a href="#porra-electoral"><span class="n">01</span><b>Porra Electoral</b><span class="flecha">→ encuestas del 29N</span></a></li>
+        <li><a href="#de-las-urnas-a-la-moncloa"><span class="n">02</span><b>De las urnas a la Moncloa</b><span class="flecha">→ de la papeleta al Gobierno</span></a></li>
+        <li><a href="#barometros"><span class="n">03</span><b>Barómetro a barómetro</b><span class="flecha">→ CIS desde 2021</span></a></li>
+        <li><a href="#historias"><span class="n">04</span><b>Historias con los barómetros del CIS</b><span class="flecha">→ para leer con scroll</span></a></li>
+        <li><a href="#de-renta-en-renta"><span class="n">05</span><b>De renta en renta</b><span class="flecha">→ vivienda y sueldos</span></a></li>
+      </ol>
 
-      <li class="proyecto">
-        <a href="https://gastiaso.github.io/porra-electoral/" tabindex="-1" aria-hidden="true">
-          <img src="https://gastiaso.github.io/porra-electoral/img/og-portada.png" width="1200" height="630" loading="lazy" alt="">
-        </a>
-        <div class="texto">
-          <h3><a href="https://gastiaso.github.io/porra-electoral/">Porra Electoral</a></h3>
-          <p>La media de las encuestas de las generales del 29 de noviembre de 2026, los escaños que salen de ella y una porra sin dinero para jugar con amigos.</p>
-          <div class="enlaces">
-            <a href="https://gastiaso.github.io/porra-electoral/">Abrir</a>
-            <a href="https://github.com/gastiaso/porra-electoral">Código</a>
-          </div>
-        </div>
-      </li>
+      <ul class="proyectos">
+        <li class="proyecto" id="porra-electoral">
+          <div class="cab"><span class="num" aria-hidden="true">1</span><h3><a href="https://gastiaso.github.io/porra-electoral/">Porra Electoral</a></h3></div>
+          <a class="foto" href="https://gastiaso.github.io/porra-electoral/" tabindex="-1" aria-hidden="true"><img src="https://gastiaso.github.io/porra-electoral/img/og-portada.png" width="1200" height="630" loading="lazy" alt=""></a>
+          <ul class="chapas"><li>29N · 2026</li><li>Modelo en R</li></ul>
+          <p class="desc">La media de las encuestas de las generales del 29 de noviembre de 2026. Junta las que publican empresas y medios, corrige lo que cada empresa suele dar de más o de menos a cada partido y simula 4.000 veces el reparto de los 350 escaños, provincia a provincia. Incluye una porra para jugar con amigos, que se guarda en un enlace y se corrige sola la noche electoral.</p>
+          <div class="enlaces"><a href="https://gastiaso.github.io/porra-electoral/">Abrir</a><a href="https://github.com/gastiaso/porra-electoral">Código</a></div>
+        </li>
 
-      <li class="proyecto">
-        <a href="https://gastiaso.github.io/de-las-urnas-a-la-moncloa/" tabindex="-1" aria-hidden="true">
-          <img src="https://gastiaso.github.io/de-las-urnas-a-la-moncloa/img/compartir.jpg" width="1200" height="630" loading="lazy" alt="">
-        </a>
-        <div class="texto">
-          <h3><a href="https://gastiaso.github.io/de-las-urnas-a-la-moncloa/">De las urnas a la Moncloa</a></h3>
-          <p>Qué se vota el 29N y cómo se pasa de una papeleta a un Gobierno, contado con los 350 escaños del Congreso: reparto por provincias, D’Hondt, Senado, mayorías, pactos y calendario, con el artículo del BOE de cada regla. En castellano, catalán, valenciano, gallego, euskera e inglés.</p>
-          <div class="enlaces">
-            <a href="https://gastiaso.github.io/de-las-urnas-a-la-moncloa/">Abrir</a>
-            <a href="https://github.com/gastiaso/de-las-urnas-a-la-moncloa">Código</a>
-          </div>
-        </div>
-      </li>
+        <li class="proyecto" id="de-las-urnas-a-la-moncloa">
+          <div class="cab"><span class="num" aria-hidden="true">2</span><h3><a href="https://gastiaso.github.io/de-las-urnas-a-la-moncloa/">De las urnas a la Moncloa</a></h3></div>
+          <a class="foto" href="https://gastiaso.github.io/de-las-urnas-a-la-moncloa/" tabindex="-1" aria-hidden="true"><img src="https://gastiaso.github.io/de-las-urnas-a-la-moncloa/img/compartir.jpg" width="1200" height="630" loading="lazy" alt=""></a>
+          <ul class="chapas"><li>29N · 2026</li><li>Interactivo</li><li>6 idiomas</li></ul>
+          <p class="desc">¿Entiendes cómo funciona el sistema electoral en España, qué se vota el 29N y qué pasa entre la papeleta y la investidura? Esta visualización interactiva te lleva paso a paso a través del sistema electoral, desde la urna hasta la Moncloa. Sigue tu voto en su camino hasta el Congreso y el Senado. A partir del 30 de noviembre se abren los pasos con los resultados. Se puede leer en castellano, catalán, valenciano, gallego, euskera e inglés.</p>
+          <div class="enlaces"><a href="https://gastiaso.github.io/de-las-urnas-a-la-moncloa/">Abrir</a><a href="https://github.com/gastiaso/de-las-urnas-a-la-moncloa">Código</a></div>
+        </li>
 
-      <li class="proyecto">
-        <a href="https://gastiaso.github.io/barometros/" tabindex="-1" aria-hidden="true">
-          <img src="https://gastiaso.github.io/barometros/img/vista-previa.png" width="1200" height="630" loading="lazy" alt="">
-        </a>
-        <div class="texto">
-          <h3><a href="https://gastiaso.github.io/barometros/">Barómetro a barómetro</a></h3>
-          <p>Las series de los barómetros mensuales del CIS desde 2021, calculadas con los microdatos, con cruces por perfil y rupturas de serie señaladas.</p>
-          <div class="enlaces">
-            <a href="https://gastiaso.github.io/barometros/">Abrir</a>
-            <a href="https://github.com/gastiaso/barometros">Código</a>
-          </div>
-        </div>
-      </li>
+        <li class="proyecto" id="barometros">
+          <div class="cab"><span class="num" aria-hidden="true">3</span><h3><a href="https://gastiaso.github.io/barometros/">Barómetro a barómetro</a></h3></div>
+          <a class="foto" href="https://gastiaso.github.io/barometros/" tabindex="-1" aria-hidden="true"><img src="https://gastiaso.github.io/barometros/img/vista-previa.png" width="1200" height="630" loading="lazy" alt=""></a>
+          <ul class="chapas"><li>CIS</li><li>Desde 2021</li></ul>
+          <p class="desc">Reúne en un solo fichero los 64 barómetros mensuales del CIS publicados entre enero de 2021 y octubre de 2026, con más de 264.000 entrevistas. El CIS publica cada barómetro por separado y de un mes a otro cambian las preguntas y la forma de ponderar, así que comparar a mano lleva tiempo y es fácil equivocarse. Aquí las series se construyen en el navegador a partir de los microdatos: intención de voto, valoración de líderes, problemas, economía o ideología, cruzadas por edad, comunidad, estudios y otros perfiles. Los cambios de método aparecen marcados en el gráfico y los datos armonizados se pueden descargar.</p>
+          <div class="enlaces"><a href="https://gastiaso.github.io/barometros/">Abrir</a><a href="https://github.com/gastiaso/barometros">Código</a></div>
+        </li>
 
-      <li class="proyecto">
-        <a href="https://gastiaso.github.io/historias/" tabindex="-1" aria-hidden="true">
-          <img src="https://gastiaso.github.io/historias/compartir/sitio.png" width="1200" height="630" loading="lazy" alt="">
-        </a>
-        <div class="texto">
-          <h3><a href="https://gastiaso.github.io/historias/">Historias con los barómetros del CIS</a></h3>
-          <p>Historias para leer con scroll, en las que el gráfico cambia mientras avanza el texto. La primera: cómo la vivienda se convirtió en el primer problema de España.</p>
-          <div class="enlaces">
-            <a href="https://gastiaso.github.io/historias/">Abrir</a>
-            <a href="https://github.com/gastiaso/historias">Código</a>
-          </div>
-        </div>
-      </li>
+        <li class="proyecto" id="historias">
+          <div class="cab"><span class="num" aria-hidden="true">4</span><h3><a href="https://gastiaso.github.io/historias/">Historias con los barómetros del CIS</a></h3></div>
+          <a class="foto" href="https://gastiaso.github.io/historias/" tabindex="-1" aria-hidden="true"><img src="https://gastiaso.github.io/historias/compartir/sitio.png" width="1200" height="630" loading="lazy" alt=""></a>
+          <ul class="chapas"><li>CIS</li><li>Vivienda</li></ul>
+          <p class="desc">Historias para leer con scroll, hechas con los datos de Barómetro a barómetro. El gráfico va cambiando a medida que avanza el texto. La primera cuenta cómo la vivienda pasó de preocupar al 5,6 % de los entrevistados en noviembre de 2023 a ser el primer problema de España en 21 barómetros seguidos, hasta el de octubre de 2026. Distingue entre la vivienda como problema del país y como problema personal, que pesa mucho más entre los jóvenes, y usa el Barómetro de Vivienda 2026 para ver qué medidas tienen apoyo.</p>
+          <div class="enlaces"><a href="https://gastiaso.github.io/historias/">Abrir</a><a href="https://github.com/gastiaso/historias">Código</a></div>
+        </li>
 
-      <li class="proyecto">
-        <a href="https://gastiaso.github.io/de-renta-en-renta/" tabindex="-1" aria-hidden="true">
-          <img src="https://gastiaso.github.io/de-renta-en-renta/estilo/tarjeta.png" width="1200" height="630" loading="lazy" alt="">
-        </a>
-        <div class="texto">
-          <p class="estado">En construcción</p>
-          <h3><a href="https://gastiaso.github.io/de-renta-en-renta/">De renta en renta</a></h3>
-          <p>Atlas de vivienda y salarios por sección censal desde 2015. ¿A quién le queda sueldo después de pagar la vivienda?</p>
-          <div class="enlaces">
-            <a href="https://gastiaso.github.io/de-renta-en-renta/">Abrir</a>
-            <a href="https://github.com/gastiaso/de-renta-en-renta">Código</a>
-          </div>
-        </div>
-      </li>
+        <li class="proyecto" id="de-renta-en-renta">
+          <div class="cab"><span class="num" aria-hidden="true">5</span><h3><a href="https://gastiaso.github.io/de-renta-en-renta/">De renta en renta</a></h3></div>
+          <a class="foto" href="https://gastiaso.github.io/de-renta-en-renta/" tabindex="-1" aria-hidden="true"><img src="https://gastiaso.github.io/de-renta-en-renta/estilo/tarjeta.png" width="1200" height="630" loading="lazy" alt=""></a>
+          <ul class="chapas"><li class="aviso">En construcción</li><li>Desde 2015</li></ul>
+          <p class="desc">Un atlas que compara lo que cuesta la vivienda con lo que se cobra en las 36.333 secciones censales de España, desde 2015. Funciona como un juego de mesa: eliges una ficha con un ingreso de referencia, por ejemplo el salario mínimo o el sueldo de una persona joven de tu provincia, y el mapa enseña dónde el alquiler se come más del 30 % de ese ingreso. Con el salario mínimo de 2024 pasaba en 9 de cada 10 secciones con dato. También puedes escribir tus propios ingresos, que no salen de tu dispositivo. Sigue en construcción y las cifras se revisan con cada edición.</p>
+          <div class="enlaces"><a href="https://gastiaso.github.io/de-renta-en-renta/">Abrir</a><a href="https://github.com/gastiaso/de-renta-en-renta">Código</a></div>
+        </li>
+      </ul>
+    </section>
+  </main>
+</div>
 
+<footer class="contra">
+  <div class="pagina">
+    <h2>Contacto</h2>
+    <p>Si encuentras un error en alguno de los proyectos, avísame por LinkedIn o abre una incidencia en su repositorio de GitHub.</p>
+    <ul>
+      <li><a href="https://www.linkedin.com/in/guillermo-astiaso/">LinkedIn</a></li>
+      <li><a href="https://github.com/gastiaso">GitHub</a></li>
     </ul>
-  </section>
-</main>
-
-<footer>
-  <h2>Contacto</h2>
-  <ul>
-    <li><a href="https://www.linkedin.com/in/guillermo-astiaso/">LinkedIn</a></li>
-    <li><a href="https://github.com/gastiaso">GitHub</a></li>
-  </ul>
+  </div>
 </footer>
 
-</div>
 </body>
 </html>
